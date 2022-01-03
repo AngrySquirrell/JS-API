@@ -70,10 +70,10 @@ const server = http.createServer(function(req,res){
                 res.write("Done ADD Modified")
                 console.log('Done ADD Modified')
 
-                item.sort()
+                // item.sort()
 
-                res.write("Done SORT Modified")
-                console.log('Done SORT Modified')
+                // res.write("Done SORT Modified")
+                // console.log('Done SORT Modified')
             })
 
 
@@ -83,7 +83,7 @@ const server = http.createServer(function(req,res){
         case "DELETE": //Suppr des données à la to-do list  --DONE--
             req.on('data', chunk => {
                 Pchunk = JSON.parse(chunk)
-                item.splice(Pchunk.id-1 , 4)
+                item.splice(Pchunk.id-1 , 1)
             
             })
             res.write("Done SUPPR")
@@ -92,7 +92,7 @@ const server = http.createServer(function(req,res){
             break;
 
         default:
-            res.write(JSON.stringify('Error, no method given.'))
+            res.write(JSON.stringify('Error, wrong method given. Please retry with GET'))
     }
     res.end()
 })
